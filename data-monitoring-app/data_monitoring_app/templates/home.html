@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        .center-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        
+        <h1>Welcome to the Data Monitoring App</h1>
+        
+        <a href="{% url 'view_and_search_tables' %}" class="button">View & Search Tables</a>
+        
+        <a href="{% url 'rule_list' %}" class="button">Rules Editor</a>
+        
+        <a href="{% url 'alert_list' %}" class="button">Security Alerts</a>
+        
+        <a href="{% url 'past_alerts' %}" class="button">Past Alerts</a>
+        
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Rule</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Add New Rule</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Rule Name: <input type="text" name="rule_name"></label><br>
+        <label>Table: <input type="text" name="table"></label><br>
+        <label>Row Count: 
+            <input type="number" name="row_count" value="{{ rule.row_count|default_if_none:'' }}">
+        </label><br>
+        <label>Threshold:
+            <select name="threshold">
+                <option value="<">&lt;</option>
+                <option value=">">&gt;</option>
+                <option value="=">=</option>
+            </select>
+        </label><br>
+        <label>Unique Attribute: <input type="text" name="unique_attribute"></label><br>
+        <label>Watch Value (for duplicate check): <input type="text" name="watch_value"></label><br>
+        <label>Timestamp Column (for data modification): <input type="text" name="attribute" value="{{ rule.attribute }}"></label><br>
+        <label>Minutes (for data modification window): 
+            <input type="number" name="minutes" value="{{ rule.minutes|default_if_none:'' }}">
+        </label><br>
+        <label>Check for Data Modification: <input type="checkbox" name="check_modification"></label><br>
+        <label>Severity:
+            <select name="severity">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </label><br>
+        <label>Description: <input type="text" name="description"></label><br>
+        <label>Active: <input type="checkbox" name="is_active"></label><br>
+        <button type="submit" class="button">Add Rule</button>
+    </form>
+    <a href="{% url 'rule_list' %}" class="button">Back to Rules</a>
+</body>
+</html>

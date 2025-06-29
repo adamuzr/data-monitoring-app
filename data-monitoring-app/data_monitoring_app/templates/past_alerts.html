@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Past Alerts</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Past Alerts</h1>
+    <table>
+        <tr>
+            <th>Alert Name</th>
+            <th>Rule Name</th>
+            <th>Table</th>
+            <th>Attribute</th>
+            <th>Row Count</th>
+            <th>Threshold</th>
+            <th>Details</th>
+            <th>Created At</th>
+            <th>Cleared At</th>
+            <th>Severity</th>
+            <th>Status</th>
+        </tr>
+        {% for alert in alerts %}
+        <tr class="severity-{{ alert.severity }}">
+            <td>{{ alert.alert_name }}</td>
+            <td>{{ alert.rule_name }}</td>
+            <td>{{ alert.table }}</td>
+            <td>{{ alert.attribute }}</td>
+            <td>{{ alert.row_count }}</td>
+            <td>{{ alert.threshold }}</td>
+            <td>{{ alert.details }}</td>
+            <td>{{ alert.created_at }}</td>
+            <td>{{ alert.cleared_at|default:"N/A" }}</td>
+            <td>{{ alert.severity }}</td>
+            <td>{{ alert.status }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="11">No past alerts.</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'home' %}" class="button">Return to Home Page</a>
+
+    <form method="post" action="{% url 'clear_past_alerts' %}" style="padding: 10px; margin-top: 10px; width: fit-content; height: min-content;">
+        {% csrf_token %}
+        <button type="submit" class="button">Clear Past Alerts</button>
+    </form>
+</body>
+</html>

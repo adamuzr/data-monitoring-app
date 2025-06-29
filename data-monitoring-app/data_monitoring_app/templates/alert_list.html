@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Alerts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Security Alerts</h1>
+    <table>
+        <tr>
+            <th>Alert Name</th>
+            <th>Rule Name</th>
+            <th>Table</th>
+            <th>Attribute</th>
+            <th>Row Count</th>
+            <th>Threshold</th>
+            <th>Details</th>
+            <th>Time & Date</th>
+            <th>Severity</th>
+            <th>Status</th>
+        </tr>
+        {% for alert in alerts %}
+        <tr class="severity-{{ alert.severity }}">
+            <td>{{ alert.alert_name }}</td>
+            <td>{{ alert.rule_name }}</td>
+            <td>{{ alert.table }}</td>
+            <td>{{ alert.attribute }}</td>
+            <td>{{ alert.row_count }}</td>
+            <td>{{ alert.threshold }}</td>
+            <td>
+                {% if alert.details %}
+                    <ul style="margin:0; padding-left:18px;">
+                    {% for detail in alert.details %}
+                        <li>{{ detail }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>{{ alert.created_at }}</td>
+            <td>{{ alert.severity }}</td>
+            <td>{{ alert.status }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="10">No active alerts.</td>
+        </tr>
+    {% endfor %}
+    </table>
+    <form method="post" action="{% url 'clear_alerts' %}" style="padding: 10px; margin-top: 10px; width: fit-content; height: min-content;">
+    {% csrf_token %}
+        <button type="submit" class="button">Clear All Alerts</button>
+    </form>
+    <h2>Active Rules Not Yet Triggered</h2>
+    <table>
+        <tr>
+            <th>Rule Name</th>
+            <th>Description</th>
+            <th>Severity</th>
+        </tr>
+        {% for rule in not_triggered_rules %}
+        <tr>
+            <td>{{ rule.rule_name }}</td>
+            <td>{{ rule.description }}</td>
+            <td>{{ rule.severity }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">All active rules have triggered alerts.</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'home' %}" class="button">Return to Home Page</a>
+</body>
+</html>

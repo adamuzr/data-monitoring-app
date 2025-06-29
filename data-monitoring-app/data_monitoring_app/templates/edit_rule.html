@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Rule</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Edit Rule: {{ rule.rule_name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Rule Name: <input type="text" name="rule_name" value="{{ rule.rule_name }}"></label><br>
+        <label>Table: <input type="text" name="table" value="{{ rule.table }}"></label><br>
+        <label>Row Count: 
+            <input type="number" name="row_count" min="1" value="{{ rule.row_count|default_if_none:'' }}">
+        </label><br>
+        <label>Threshold:
+            <select name="threshold">
+                <option value="<" {% if rule.threshold == "<" %}selected{% endif %}>&lt;</option>
+                <option value=">" {% if rule.threshold == ">" %}selected{% endif %}>&gt;</option>
+                <option value="=" {% if rule.threshold == "=" %}selected{% endif %}>=</option>
+            </select>
+        </label><br>
+        <label>Unique Attribute: <input type="text" name="unique_attribute" value="{{ rule.unique_attribute }}"></label><br>
+        <label>Watch Value (for duplicate check): <input type="text" name="watch_value" value="{{ rule.watch_value }}"></label><br>
+        <label>Timestamp Column (for data modification): <input type="text" name="attribute" value="{{ rule.attribute }}"></label><br>
+        <label>Minutes (for data modification window): 
+            <input type="number" name="minutes" min="1" value="{{ rule.minutes|default_if_none:'' }}">
+        </label><br>
+        <label>Check for Data Modification: <input type="checkbox" name="check_modification" {% if rule.check_modification %}checked{% endif %}></label><br>
+        <label>Severity:
+            <select name="severity">
+                <option value="High" {% if rule.severity == "High" %}selected{% endif %}>High</option>
+                <option value="Medium" {% if rule.severity == "Medium" %}selected{% endif %}>Medium</option>
+                <option value="Low" {% if rule.severity == "Low" %}selected{% endif %}>Low</option>
+            </select>
+        </label><br>
+        <label>Description: <input type="text" name="description" value="{{ rule.description }}"></label><br>
+        <label>Active: <input type="checkbox" name="is_active" {% if rule.is_active %}checked{% endif %}></label><br>
+        <button type="submit" class="button button-delete">Save Changes</button>
+    </form>
+    <a href="{% url 'rule_list' %}" class="button button-delete">Back to Rules</a>
+</body>
+</html>

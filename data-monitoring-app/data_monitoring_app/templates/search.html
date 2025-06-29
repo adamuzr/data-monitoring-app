@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View and Search Tables</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>View and Search Tables</h1>
+    <form method="get" action="">
+        <input type="text" name="search" placeholder="Search tables..." value="{{ search_query }}">
+        <button type="submit" class="button">Search</button>
+    </form>
+    <h2>Tables:</h2>
+    <ul>
+        {% for t in tables %}
+            <li>
+                <a href="{% url 'view_table_data' schema=t.schema table=t.table %}">
+                    {{ t.table }}
+                </a>
+            </li>
+        {% empty %}
+            <li>No tables found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}" class="button">Return to Home Page</a>
+</body>
+</html>

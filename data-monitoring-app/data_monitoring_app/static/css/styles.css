@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f7f7;
+    margin: 0;
+    padding: 0 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #333;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.alert {
+    background-color: #ffdddd;
+    color: #d8000c;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #d8000c;
+    border-radius: 5px;
+}
+
+.search-box {
+    margin: 20px 0;
+}
+
+.search-box input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-box button {
+    padding: 10px;
+    background-color: #35424a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    background-color: #45a049;
+}
+
+.report {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.visualization {
+    margin: 20px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: #35424a;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.navbar {
+    background-color: #35424a;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #4a5c66;
+}
+
+.home-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.navigation-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #35424a;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+}
+
+.button, button, input[type="submit"] {
+    background: none;
+    color: #007bff;
+    border: 2px solid #007bff;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 0;
+    font-size: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover {
+    background: #007bff;
+    color: white;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #fff;
+    box-shadow: 0 2px 8px #ddd;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px 8px;
+    text-align: left;
+}
+th {
+    background: #f0f0f0;
+    color: #222;
+}
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+tr.severity-High {
+    background-color: #ffcccc;
+}
+tr.severity-Medium {
+    background-color: #fff7cc;
+}
+tr.severity-Low {
+    background-color: #ccffcc;
+}
+
+form {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0b5ed7;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px 0;
+    color: #333;
+}
+
+input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+a.button {
+    text-decoration: none;
+    display: inline-block;
+}

@@ -1,0 +1,44 @@
+[
+    {
+        "rule_name": "High Film Count",
+        "table": "film",
+        "row_count": 500,
+        "threshold": ">",
+        "unique_attribute": "",
+        "watch_value": "",
+        "check_modification": false,
+        "severity": "Medium",
+        "description": "Triggers an alert if the number of rows in the film table exceeds 500.",
+        "is_active": true,
+        "attribute": "",
+        "minutes": 5
+    },
+    {
+        "rule_name": "Recent Film Updates",
+        "table": "film",
+        "row_count": 10,
+        "threshold": "<",
+        "unique_attribute": "",
+        "watch_value": "",
+        "check_modification": true,
+        "severity": "High",
+        "description": "Triggers an alert if more than 5 rows in the film table are modified within the last 500 minutes.",
+        "is_active": true,
+        "attribute": "last_update",
+        "minutes": 500
+    },
+    {
+        "rule_name": "Duplicate Film Title",
+        "table": "film",
+        "row_count": 0,
+        "threshold": "<",
+        "unique_attribute": "title",
+        "watch_value": "liew",
+        "check_modification": false,
+        "severity": "High",
+        "description": "Triggers an alert if duplicate values are found in the title column of the film table.",
+        "is_active": true,
+        "attribute": "",
+        "minutes": 5
+    }
+]

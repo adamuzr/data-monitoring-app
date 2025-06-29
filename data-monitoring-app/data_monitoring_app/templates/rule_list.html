@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rules Editor</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Rules Editor</h1>
+    <table>
+        <tr>
+            <th>Rule Name</th>
+            <th>Table</th>
+            <th>Row Count</th>
+            <th>Threshold</th>
+            <th>Unique Attribute</th>
+            <th>Severity</th>
+            <th>Description</th>
+            <th>Active</th>
+            <th>Watch Value</th>
+            <th>Check Modification</th>
+            <th>Timestamp Column</th>
+            <th>Minutes</th>
+            <th>Edit</th>
+            <th>Delete</th>
+            
+        </tr>
+        {% for rule in rules %}
+        <tr>
+            <td>{{ rule.rule_name }}</td>
+            <td>{{ rule.table }}</td>
+            <td>{{ rule.row_count }}</td>
+            <td>{{ rule.threshold }}</td>
+            <td>{{ rule.unique_attribute }}</td>
+            <td>{{ rule.severity }}</td>
+            <td>{{ rule.description }}</td>
+            <td>{{ rule.is_active }}</td>
+            <td>{{ rule.watch_value }}</td>
+            <td>{% if rule.check_modification %}Yes{% else %}No{% endif %}</td>
+            <td>{{ rule.attribute }}</td>
+            <td>{{ rule.minutes }}</td>
+            <td>
+                <a href="{% url 'edit_rule' rule.rule_name %}" class="button button-delete">Edit</a>
+            </td>
+            <td>
+                <a href="{% url 'delete_rule' rule.rule_name %}" class="button button-delete">Delete</a>
+            </td>
+            
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="10">No rule available.</td>
+        </tr>
+        {% endfor %}
+    </table>
+        <a href="{% url 'add_rule' %}" class="button">Add New Rule</a>
+    <a href="{% url 'home' %}" class="button">Return to Home Page</a>
+</body>
+</html>
